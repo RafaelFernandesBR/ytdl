@@ -148,11 +148,11 @@ def get_video_id():
 	os.system('clear')
 	video_id = input("Insira a url do Vídeo ou da Playlist: ")
 
+#verificando se o link é do youtube ou youtube music
 	ytmc=text_id(video_id, qtd=26)
 	if(ytmc == "https://music.youtube.com/"):
 		video_id=text_id(video_id, start=34, qtd=11)
 	else:
-
 		video_id=text_id(video_id, start=17)
 
 	if len(video_id) > 11:
