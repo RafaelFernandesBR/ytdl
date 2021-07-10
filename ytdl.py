@@ -2,10 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from os.path import expanduser
-import os
-import sys
+import os, sys, subprocess, textwrap
 import urllib.request, urllib.error, urllib.parse
-import subprocess
 
 #-------------------------------------
 # Criado por: Wolfterro
@@ -15,24 +13,66 @@ import subprocess
 #-------------------------------------
 
 version = "2.0.4"
-is_termux= "true"
+is_termux = "true"
+
+ajuda = f"""\
+==================================================
+Youtube-DL Script - Versão {version} - Python 3.x
+==================================================
+
+ * Este script requer o youtube-dl instalado e reconhecido como comando do shell
+ * O pacote 'libav' ou 'ffmpeg' deverá estar instalado para converter os vídeos baixados
+ * Caso não tenha o youtube-dl instalado, utilize a opção 'Instalar/Atualizar youtube-dl'
+ * É necessário privilégios de root para instalar e atualizar o youtube-dl"
+ * Utilize os formatos de conversão caso o formato escolhido não esteja disponível
+ 
+Uso: ./ytdl.py [Argumento]
+
+Argumentos:
+-----------
+
+ -h || --help			Mostra este menu de ajuda
+ 
+"""
+
+main_menu = f"""\
+	====================================================
+	Youtube-DL Script - Versão {version} - Python 3.x"
+	====================================================
+
+	Escolha uma das opções abaixo (qualquer outra tecla para sair):
+	---------------------------------------------------------------
+ 
+	Áudio (Conversão):
+	------------------
+ 
+	(1) Formato MP3
+	(2) Formato WAV
+	
+	Vídeo (Nativo):
+	---------------
+ 
+	(3) Formato MP4
+	(4) Formato WEBM
+	(5) Formato 3GP
+	(6) Formato MKV
+	
+	Vídeo (Conversão):
+	------------------
+ 
+	(7) Formato MP4
+	(8) Formato WEBM
+	(9) Formato MKV
+
+	Opções:
+	-------
+ 
+	(0) Instalar/Atualizar youtube-dl
+ 
+"""
 
 def help():
-	print("=============================================")
-	print("Youtube-DL Script - Versão %s - Python 3.x" % (version))
-	print("=============================================\n")
-
-	print(" * Este script requer o youtube-dl instalado e reconhecido como comando do shell")
-	print(" * O pacote 'libav' ou 'ffmpeg' deverá estar instalado para converter os vídeos baixados")
-	print(" * Caso não tenha o youtube-dl instalado, utilize a opção 'Instalar/Atualizar youtube-dl'")
-	print(" * É necessário privilégios de root para instalar e atualizar o youtube-dl")
-	print(" * Utilize os formatos de Conversão caso o formato escolhido não esteja disponível\n")
-
-	print("Uso: ./Youtube-DL-Script.py [Argumento]\n")
-
-	print("Argumentos:")
-	print("-----------")
-	print(" -h || --help\t\tMostra este menu de ajuda\n")
+	print(ajuda)
 
 def get_home_dir():
 	get_home = os.path.expanduser("/sdcard/Download/")
@@ -104,33 +144,7 @@ def youtube_dl_options(home_dir):
 		print("Saindo ...")
 
 def main_menu():
-	print("=============================================")
-	print("Youtube-DL Script - Versão %s - Python 3.x" % (version))
-	print("=============================================\n")
-
-	print("Escolha uma das opções abaixo (qualquer outra tecla para sair):")
-	print("---------------------------------------------------------------")
-	print("Áudio (Conversão):")
-	print("------------------")
-	print("(1) Formato MP3")
-	print("(2) Formato WAV\n")
-	
-	print("Vídeo (Nativo):")
-	print("---------------")
-	print("(3) Formato MP4")
-	print("(4) Formato WEBM")
-	print("(5) Formato 3GP")
-	print("(6) Formato MKV\n")
-	
-	print("Vídeo (Conversão):")
-	print("------------------")
-	print("(7) Formato MP4")
-	print("(8) Formato WEBM")
-	print("(9) Formato MKV\n")
-
-	print("Opções:")
-	print("-------")
-	print("(0) Instalar/Atualizar youtube-dl\n")
+	print(main_menu)
 
 	user_input = input("Escolha uma das opções acima: ")
 	return user_input
