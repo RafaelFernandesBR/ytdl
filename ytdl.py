@@ -14,7 +14,8 @@ import subprocess
 # Data: 26/06/2021
 #-------------------------------------
 
-version = "2.0.1"
+version = "2.0.4"
+is_termux= "true"
 
 def help():
 	print("=============================================")
@@ -148,11 +149,11 @@ def get_video_id():
 	os.system('clear')
 	video_id = input("Insira a url do Vídeo ou da Playlist: ")
 
-#verificando se o link é do youtube ou youtube music
 	ytmc=text_id(video_id, qtd=26)
 	if(ytmc == "https://music.youtube.com/"):
 		video_id=text_id(video_id, start=34, qtd=11)
 	else:
+
 		video_id=text_id(video_id, start=17)
 
 	if len(video_id) > 11:
@@ -251,6 +252,10 @@ if __name__ == "__main__":
 	else:
 		main()
 		while True:
+
+			if(is_termux == "true"):
+				os.system('termux-vibrate -d 50')
+
 			os.system('clear')
 			print(" ")
 			one_more_time = input("Deseja executar o script mais uma vez? [s/N]: ")
