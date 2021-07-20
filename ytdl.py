@@ -12,8 +12,9 @@ import urllib.request, urllib.error, urllib.parse
 # Data: 26/06/2021
 #-------------------------------------
 
-version = "2.0.4"
+version = "2.0.7"
 is_termux = "true"
+user_input=0
 
 ajuda =('Youtube-DL Script - Versão '+version+' - Python 3.x.\n* Este script requer o youtube-dl instalado e reconhecido como comando do shell\n* O pacote libav ou ffmpeg deverá estar instalado para converter os vídeos baixados\n* Caso não tenha o youtube-dl instalado, utilize a opção (Instalar/Atualizar youtube-dl)\n* É necessário privilégios de root para instalar e atualizar o youtube-dl"\n* Utilize os formatos de conversão caso o formato escolhido não esteja disponível\nUso: ./ytdl.py [Argumento]\nArgumentos:\n-h || --help			Mostra este menu de ajuda')
 
@@ -115,7 +116,6 @@ def get_video_id():
 	if(ytmc == "https://music.youtube.com/"):
 		video_id=text_id(video_id, start=34, qtd=11)
 	else:
-
 		video_id=text_id(video_id, start=17)
 
 	if len(video_id) > 11:
@@ -206,6 +206,11 @@ if __name__ == "__main__":
 	argc = len(sys.argv)
 	
 	if argc > 1:
+
+		if str(sys.argv[1]) == "d3":
+			user_input=1
+			get_video_id()
+
 		if str(sys.argv[1]) == "-h" or str(sys.argv[1]) == "--help":
 			help()
 		else:
