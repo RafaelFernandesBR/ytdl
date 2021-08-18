@@ -216,7 +216,7 @@ if __name__ == "__main__":
 		while True:
 
 			if(is_termux == "true"):
-				os.system('termux-vibrate -d 50')
+				os.system('termux-vibrate -d 50 -f')
 
 			os.system('clear')
 			print(" ")
