@@ -13,7 +13,7 @@ import urllib.request, urllib.error, urllib.parse
 #-------------------------------------
 
 version = "2.0.7"
-is_termux = "true"
+is_termux = True
 
 ajuda =('Youtube-DL Script - Versão '+version+' - Python 3.x.\n* Este script requer o youtube-dl instalado e reconhecido como comando do shell\n* O pacote libav ou ffmpeg deverá estar instalado para converter os vídeos baixados\n* Caso não tenha o youtube-dl instalado, utilize a opção (Instalar/Atualizar youtube-dl)\n* É necessário privilégios de root para instalar e atualizar o youtube-dl"\n* Utilize os formatos de conversão caso o formato escolhido não esteja disponível\nUso: ./ytdl.py [Argumento]\nArgumentos:\n-h || --help			Mostra este menu de ajuda')
 
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 		main()
 		while True:
 
-			if(is_termux == "true"):
+			if(is_termux == True):
 				os.system('termux-vibrate -d 50 -f')
 
 			os.system('clear')
