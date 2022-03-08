@@ -14,7 +14,7 @@ import urllib.request, urllib.error, urllib.parse
 
 version = "2.0.7"
 is_termux = True
-
+caminho="/sdcard/Download/"
 ajuda =('Youtube-DL Script - Versão '+version+' - Python 3.x.\n* Este script requer o youtube-dl instalado e reconhecido como comando do shell\n* O pacote libav ou ffmpeg deverá estar instalado para converter os vídeos baixados\n* Caso não tenha o youtube-dl instalado, utilize a opção (Instalar/Atualizar youtube-dl)\n* É necessário privilégios de root para instalar e atualizar o youtube-dl"\n* Utilize os formatos de conversão caso o formato escolhido não esteja disponível\nUso: ./ytdl.py [Argumento]\nArgumentos:\n-h || --help			Mostra este menu de ajuda')
 
 menu =('Youtube-DL Script - Versão '+version+' - Python 3.x.\nEscolha uma das opções abaixo (qualquer outra tecla para sair):\nÁudio (Conversão):\n(1) Formato MP3\n(2) Formato WAV\nVídeo (Nativo):\n(3) Formato MP4\n(4) Formato WEBM\n(5) Formato 3GP\n(6) Formato MKV\nVídeo (Conversão):\n(7) Formato MP4\n(8) Formato WEBM\n(9) Formato MKV\nOpções:\n(dl) Instalar/Atualizar youtube-dl')
@@ -23,7 +23,7 @@ def help():
 	print(ajuda)
 
 def get_home_dir():
-	get_home = os.path.expanduser("/sdcard/Download/")
+	get_home = os.path.expanduser(caminho)
 	return get_home
 
 def check_download_dir(get_home, video):
