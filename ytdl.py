@@ -128,8 +128,12 @@ def get_video_id():
 
     if("music.youtube.com" in video_id):
         video_id = re.search(r'v=(.*?)&', video_id).group(1)
+        
     elif ("youtube.com" in video_id):
         video_id = text_id(video_id, start=32)
+
+    elif("youtube.com/playlist" in video_id):
+        video_id = re.search(r'list=(.*?)', video_id).group(1)
     else:
         video_id = text_id(video_id, start=17)
 
